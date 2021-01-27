@@ -1,0 +1,79 @@
+static void Main(string[] args)
+        {
+            Random rand = new Random();
+
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1) Roll Dice Once");
+            Console.WriteLine("2) Roll Dice 5 Times");
+            Console.WriteLine("3) Roll Dice ‘n’ Times");
+            Console.WriteLine("4) Roll Dice until Snake Eyes");
+            Console.WriteLine("5) Exit");
+
+            Console.WriteLine("Enter Command");
+            string Command = Console.ReadLine();
+
+            if(Command=="1")
+            {
+                int a = rand.Next(1, 8);
+                int b = rand.Next(1, 8);
+                Console.WriteLine($"{a}-{b} (total={a+b})");
+            }
+            else if(Command=="2")
+            {
+                for(int i=0; i<5; i++)
+                {
+                    int a = rand.Next(1,8);
+                    int b = rand.Next(1, 8);
+                    Console.WriteLine($"{a}-{b} (total={a + b})");
+                }
+            }
+            else if (Command == "3")
+            {
+                Console.WriteLine("Enter n:");
+                string N = Console.ReadLine();
+                int RollDiceCount;
+                if(int.TryParse(N,out RollDiceCount)==true)
+                {
+                    for(int i=0;i<RollDiceCount;i++)
+                    {
+                        int a = rand.Next(1, 8);
+                        int b = rand.Next(1, 8);
+                        Console.WriteLine($"{a}-{b} (total={a + b})");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("N cannot be a string");
+
+                }
+
+            }
+            else if (Command == "4")
+            {
+                int Count = 0;
+                while(1>0)
+                {
+                    int a = rand.Next(1, 8);
+                    int b = rand.Next(1, 8);
+                    Console.WriteLine($"{a}-{b} (total={a + b})");
+                    Count++;
+                    if(a==b)
+                    {
+                        Console.WriteLine($"SNAKE EYES! It took {Count} rolls to get snake eyes.");
+                        break;
+                    }
+                }
+            }
+            else if (Command == "5")
+            {
+                Console.WriteLine("Okay!");
+
+            }
+            else
+            {
+                Console.WriteLine("Command invalid");
+
+            }
+
+            Console.ReadKey();
+        }
